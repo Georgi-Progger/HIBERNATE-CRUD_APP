@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkillHibernateIml implements GenericRepository<Skill, Integer> {
-    SessionFactory sessionFactory;
+
 
     @Override
     public Skill getById(Integer integer) {
@@ -49,7 +49,9 @@ public class SkillHibernateIml implements GenericRepository<Skill, Integer> {
     @Override
     public Skill save(Skill skill) {
         try (Session session = ConnectSession.getConnectSession().getSession().openSession();) {
+            session.beginTransaction();
             session.save(skill);
+            session.getTransaction().commit();
             if (session != null && session.isOpen()) {
                 session.close();
             }
@@ -93,18 +95,5 @@ public class SkillHibernateIml implements GenericRepository<Skill, Integer> {
         }
     }
 
-    public static void main(String[] args) {
-        SkillHibernateIml skillHibernateIml = new SkillHibernateIml();
 
-
-//        Skill skill = new Skill();
-//        skill.setName("Scala");
-//        skill.setStatus(Status.DELETED);
-//        skillHibernateIml.save(skill);
-//        skillHibernateIml.deleteById(1);
-        List<Skill> skills = skillHibernateIml.getAll();
-        for (Object j : skills){
-            System.out.println(j);
-        }
-    }
 }

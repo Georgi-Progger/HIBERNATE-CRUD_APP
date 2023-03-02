@@ -18,8 +18,7 @@ public class Specialty {
     public Specialty() {
     }
 
-    public Specialty(int id, String name) {
-        this.id = id;
+    public Specialty( String name) {
         Name = name;
         this.status = Status.ACTIVE;
     }

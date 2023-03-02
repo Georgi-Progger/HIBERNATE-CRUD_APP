@@ -1,19 +1,33 @@
 package crudapp.model;
 
+import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.Set;
 
+@Entity
+@Table(name = "SKILLS")
 public class Developer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "id")
     private int id;
+
+    @Column(name = "FIRSTNAME")
     private String firstName;
+    @Column(name = "LASTNAME")
     private String lastName;
-    private Set<Skill> skillList;
+    @ManyToMany
+    private Set skillList;
+    @ManyToOne(cascade = CascadeType.ALL)
     private Specialty specialty;
+    @Column(name = "STATUS")
+    @Enumerated(EnumType.ORDINAL)
     private Status status;
     public Developer() {
     }
 
-    public Developer(String firstName, String lastName, Set<Skill> skillList, Specialty specialty) {
+    public Developer(String firstName, String lastName,Set skillList, Specialty specialty) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.status = Status.ACTIVE;
@@ -21,11 +35,11 @@ public class Developer {
         this.specialty = specialty;
     }
 
-    public Set<Skill> getSkillList() {
+    public Set getSkillList() {
         return skillList;
     }
 
-    public void setSkillList(Set<Skill> skillList) {
+    public void setSkillList(Set skillList) {
         this.skillList = skillList;
     }
 
@@ -68,13 +82,16 @@ public class Developer {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     @Override
     public String toString() {
         return "Developer{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", skillList=" + skillList +
+                ", specialty=" + specialty +
+                ", status=" + status +
                 '}';
     }
-
 }

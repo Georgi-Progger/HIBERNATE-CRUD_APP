@@ -49,7 +49,9 @@ public class SpecialtyHibernateIml implements GenericRepository<Specialty, Integ
     @Override
     public Specialty save(Specialty specialty) {
         try (Session session = ConnectSession.getConnectSession().getSession().openSession();) {
+            session.beginTransaction();
             session.save(specialty);
+            session.getTransaction().commit();
             if (session != null && session.isOpen()) {
                 session.close();
             }
@@ -92,20 +94,5 @@ public class SpecialtyHibernateIml implements GenericRepository<Specialty, Integ
             System.out.println(e.getMessage());
         }
     }
-    public static void main(String[] args) {
-        SpecialtyHibernateIml skillHibernateIml = new SpecialtyHibernateIml();
 
-
-//        Specialty specialty = new Specialty();
-//        specialty.setName("ScalaDeveloper");
-//        specialty.setStatus(Status.ACTIVE);
-//        skillHibernateIml.save(specialty);
-
-
-        skillHibernateIml.deleteById(1);
-        List<Specialty> skills = skillHibernateIml.getAll();
-        for (Object j : skills){
-            System.out.println(j);
-        }
-    }
 }

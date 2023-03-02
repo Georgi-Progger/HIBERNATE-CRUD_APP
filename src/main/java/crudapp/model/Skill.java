@@ -14,6 +14,10 @@ public class Skill {
     private int id;
     @Column(name = "NAME")
     private String Name;
+
+
+
+
     @Column(name = "STATUS")
     @Enumerated(EnumType.ORDINAL)
     private Status status;
@@ -21,8 +25,7 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(int id, String name) {
-        this.id = id;
+    public Skill(String name) {
         Name = name;
         this.status = Status.ACTIVE;
     }
@@ -48,6 +51,27 @@ public class Skill {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public boolean equals(Object object) {
+        if (object == null) {
+            return false;
+        }
+        if (!this.getClass().equals(object.getClass())) {
+            return false;
+        }
+
+        Skill object2 = (Skill) object;
+        if ((this.id == object2.getId()) && (this.Name == object2.getName()) ) {
+            return true;
+        }
+        return false;
+    }
+
+    public int hasCode() {
+        int code = 0;
+        code = (id + Name ).hashCode();
+        return code;
     }
 
     @Override
