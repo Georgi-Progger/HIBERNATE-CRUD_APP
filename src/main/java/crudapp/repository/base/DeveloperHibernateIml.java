@@ -37,9 +37,7 @@ public class DeveloperHibernateIml implements GenericRepository<Developer,Intege
     public List<Developer> getAll() {
         List<Developer> developers = new ArrayList();
         try (Session session = ConnectSession.getConnectSession().getSession().openSession();) {
-            developers = session.createQuery( "from Developer d " +
-                            "join fetch d.skills " +
-                            "join fetch d.specialties",
+            developers = session.createQuery( "FROM Developer",
                     Developer.class
             ).getResultList();
             if (session != null && session.isOpen()) {
@@ -100,5 +98,6 @@ public class DeveloperHibernateIml implements GenericRepository<Developer,Intege
             System.out.println(e.getMessage());
         }
     }
+
 
 }
