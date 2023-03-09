@@ -19,7 +19,7 @@ public class Developer {
     private String lastName;
     @ManyToMany
     private Set skillList;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Specialty specialty;
     @Column(name = "STATUS")
     @Enumerated(EnumType.ORDINAL)
@@ -82,6 +82,7 @@ public class Developer {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 
     @Override
     public String toString() {
