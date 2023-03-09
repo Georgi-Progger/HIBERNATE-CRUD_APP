@@ -5,7 +5,6 @@ import crudapp.model.Skill;
 import crudapp.model.Status;
 import crudapp.repository.GenericRepository;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import javax.swing.*;
 import java.util.ArrayList;

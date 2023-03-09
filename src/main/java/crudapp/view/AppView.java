@@ -5,8 +5,8 @@ public class AppView {
     SpecialtyView specialtyView = new SpecialtyView();
     DeveloperView developerView = new DeveloperView();
     public void mainWorkProgram(){
-//        skillView.workProgram();
-//        specialtyView.workProgram();
+        skillView.workProgram();
+        specialtyView.workProgram();
         developerView.workProgram();
     }
 

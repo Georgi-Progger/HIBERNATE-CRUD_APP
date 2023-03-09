@@ -8,11 +8,9 @@ import crudapp.repository.GenericRepository;
 import crudapp.util.ConnectSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class DeveloperHibernateIml implements GenericRepository<Developer,Integer> {

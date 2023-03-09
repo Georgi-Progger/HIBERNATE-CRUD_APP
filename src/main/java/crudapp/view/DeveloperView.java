@@ -6,7 +6,6 @@ import crudapp.controller.SpecialtyController;
 import crudapp.model.Developer;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
 
 public class DeveloperView {
